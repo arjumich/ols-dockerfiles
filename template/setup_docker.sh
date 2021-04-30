@@ -21,7 +21,7 @@ vhTemplate docker {
   }
 }
 
-" >> /home/olsuser/lsws/conf/httpd_config.conf
+" >> /home/olsuser/tmp/lsws/conf/httpd_config.conf
 
 mkdir -p /var/www/vhosts/localhost/{html,logs,certs}
 chown olsuser:olsuser /var/www/vhosts/localhost/ -R
