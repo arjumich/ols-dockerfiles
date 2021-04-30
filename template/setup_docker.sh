@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 echo "listener HTTP {
-  address                 *:80
+  address                 *:8080
   secure                  0
 }
 
 listener HTTPS {
-  address                 *:443
+  address                 *:8443
   secure                  1
-  keyFile                 /usr/local/lsws/admin/conf/webadmin.key
-  certFile                /usr/local/lsws/admin/conf/webadmin.crt
+  keyFile                 /home/olsuser/lsws/admin/conf/webadmin.key
+  certFile                /home/olsuser/lsws/admin/conf/webadmin.crt
 }
 
 vhTemplate docker {
@@ -21,7 +21,7 @@ vhTemplate docker {
   }
 }
 
-" >> /usr/local/lsws/conf/httpd_config.conf
+" >> /home/olsuser/lsws/conf/httpd_config.conf
 
 mkdir -p /var/www/vhosts/localhost/{html,logs,certs}
-chown 1000:1000 /var/www/vhosts/localhost/ -R
+chown olsuser:olsuser /var/www/vhosts/localhost/ -R
