@@ -1,9 +1,10 @@
 #!/bin/bash
-if [ -z "$(ls -A -- "/home/olsuser/tmp/lsws/conf/")" ]; then
-	cp -R /home/olsuser/tmp/lsws/.conf/* /home/olsuser/tmp/lsws/conf/
+SERVERROOT=/home/olsuser/tmp/lsws
+if [ -z "$(ls -A -- "$SERVERROOT/conf/")" ]; then
+	cp -R $SERVERROOT/.conf/* $SERVERROOT/conf/
 fi
-if [ -z "$(ls -A -- "/home/olsuser/tmp/lsws/admin/conf/")" ]; then
-	cp -R /home/olsuser/tmp/lsws/admin/.conf/* /home/olsuser/tmp/lsws/admin/conf/
+if [ -z "$(ls -A -- "$SERVERROOT/admin/conf/")" ]; then
+	cp -R $SERVERROOT/admin/.conf/* $SERVERROOT/admin/conf/
 fi
 
 
@@ -21,7 +22,7 @@ then
          echo "ols files exists"
 	else
 		echo "[INFO] Copying app files to /home/olsuser/lsws";
-		cp -rp /home/olsuser/tmp/lsws /home/olsuser
+		cp -rp $SERVERROOT /home/olsuser
 		echo "[INFO] App files copied to /home/olsuser/lsws";
 	fi
 else

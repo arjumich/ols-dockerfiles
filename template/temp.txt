@@ -1,0 +1,15 @@
+RUN \
+    groupadd -g 1005 olsUser && useradd -u 1005 -g olsUser -G sudo -m -s /bin/bash olsUser && \
+    sed -i /etc/sudoers -re 's/^%sudo.*/%sudo ALL=(ALL:ALL) NOPASSWD: ALL/g' && \
+    sed -i /etc/sudoers -re 's/^root.*/root ALL=(ALL:ALL) NOPASSWD: ALL/g' && \
+    sed -i /etc/sudoers -re 's/^#includedir.*/## **Removed the include directive** ##"/g' && \
+    echo "olsUser ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
+    echo "Customized the sudoers file for passwordless access to the olsUser user!" && \
+    echo "olsUser user:"; su - olsUser -c id
+
+
+    /home/olsuser/tmp/lsws
+
+    git reset --hard <commit no>
+
+    sudo docker run --rm -it --name ols -p 8080:8080 --read-only --tmpfs=/tmp --tmpfs=/var/www/vhosts -v /home/arjun/Docker-vol/ols/:/home/olsuser/lsws ols_v1
